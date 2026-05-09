@@ -1,0 +1,6 @@
+:root {
+  --background: oklch(11.8% 0.01 240);
+  --primary: oklch(100% 0 0);
+  --secondary: oklch(50% 0.01 240);
+  --highlight: oklch(0.6 0.22 258);
+}
