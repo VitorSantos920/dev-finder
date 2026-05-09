@@ -1,7 +1,13 @@
+import { Header } from '@/components/Header/Header';
+
 export function App() {
   return (
-    <div>
-      <h1>Dev Finder</h1>
-    </div>
+    <>
+      <Header />
+      <section className="hero"></section>
+      <main className="container">
+        <h1>Dev Finder</h1>
+      </main>
+    </>
   );
 }
