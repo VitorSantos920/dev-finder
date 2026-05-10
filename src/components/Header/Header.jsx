@@ -1,21 +1,14 @@
-import { Computer, Moon } from 'lucide-react';
-import './header.css';
+import { Moon } from 'lucide-react';
 import { MenuItem } from '../MenuItem/MenuItem';
 import { SearchInput } from '../SearchInput/SearchInput';
+import { Logo } from '../Logo/Logo';
+import './header.css';
 
 export function Header() {
   return (
     <header className="header">
       <div className="header__container">
-        <a className="header__logo" href="/">
-          <div className="header__logo-container">
-            <Computer size={15} />
-          </div>
-          <div className="header__logo-info">
-            Dev
-            <span>Finder</span>
-          </div>
-        </a>
+        <Logo />
 
         <nav className="header__menu">
           <MenuItem link="/" content="Home" />

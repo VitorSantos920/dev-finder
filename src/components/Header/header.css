@@ -17,31 +17,6 @@
     justify-content: space-between;
     padding: 0 1.25rem;
 
-    .header__logo {
-      display: flex;
-      align-items: center;
-      gap: .75rem;
-
-      .header__logo-container {
-        background-color: var(--highlight);
-        border-radius: .5rem;
-        height: 1.75rem;
-        width: 1.75rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: .25rem;
-      }
-
-      .header__logo-info {
-        font-weight: 700;
-
-        span {
-          color: var(--highlight);
-        }
-      }
-    }
-
     .header__menu,
     .header__actions {
       font-size: .875rem;
