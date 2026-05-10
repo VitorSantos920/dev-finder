@@ -1,18 +1,10 @@
 import { Header } from '@/components/Header/Header';
 import { SearchInput } from '@/components/SearchInput/SearchInput';
-import {
-  ArrowRight,
-  Calendar,
-  ChartNoAxesColumn,
-  Code,
-  MapPin,
-  Search,
-  Users,
-  Zap,
-} from 'lucide-react';
+import { ArrowRight, ChartNoAxesColumn, Code, Search, Users, Zap } from 'lucide-react';
 import { Logo } from '@/components/Logo/Logo';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FeatureItem } from './components/FeatureItem/FeatureItem';
+import { ProfileCard } from './components/ProfileCard/ProfileCard';
 
 const API_BASE = 'https://api.github.com/users';
 
@@ -52,6 +44,14 @@ export function App() {
       setIsLoading(false);
     }
   }
+
+  useEffect(() => {
+    if (profile) {
+      document.title = `${profile.name ?? profile.login} (@${profile.login}) | devfinder`;
+    } else {
+      document.title = 'devfinder - Discover developers through data';
+    }
+  }, [profile]);
   return (
     <>
       <Header />
@@ -89,41 +89,7 @@ export function App() {
 
           {error && <p>{error}!</p>}
 
-          {profile && (
-            <article className="hero__profile">
-              <section className="hero__profile-user-info">
-                <img src={profile.avatar_url} />
-                <h2>{profile.name}</h2>
-                <small>
-                  @{profile.login} | <MapPin size={12} /> {profile.location ?? 'N/A'}
-                </small>
-                <p>{profile.bio ?? 'No bio available.'}</p>
-                <p className="hero__profile-join-date">
-                  <Calendar size={12} />
-                  Joined at {new Date(profile.created_at).toLocaleDateString('en-US')}
-                </p>
-              </section>
-
-              <div className="divider"></div>
-
-              <section className="hero__profile-metrics">
-                <div className="hero__profile-metric">
-                  <strong>{profile.public_repos}</strong> <span>Public Repos</span>
-                </div>
-                <div className="hero__profile-metric">
-                  <strong>{profile.followers}</strong> <span>Followers</span>
-                </div>
-                <div className="hero__profile-metric">
-                  <strong>{profile.following}</strong> <span>Following</span>
-                </div>
-
-                <a href={profile.html_url} target="_blank" className="hero__profile-link">
-                  View on GitHub
-                  <ArrowRight size={15} />
-                </a>
-              </section>
-            </article>
-          )}
+          {profile && <ProfileCard profile={profile} />}
         </section>
 
         <section className="platform-preview">
