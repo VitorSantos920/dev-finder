@@ -44,7 +44,7 @@ export function App() {
             <span>about any developer.</span>
           </h2>
 
-          <img src="/public/profile-mockup.webp" className="plataform-preview__exhibition" />
+          <img src="/profile-mockup.webp" className="plataform-preview__exhibition" />
         </section>
       </main>
       <footer>
