@@ -9,14 +9,19 @@
   &::after {
     box-sizing: border-box;
   }
+}
 
-  input,
-  button,
-  textarea,
-  select {
-    font-family: inherit;
-    color: inherit;
-  }
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
 }
 
 body {
@@ -31,7 +36,12 @@ body {
 
   .container {
     max-width: 75rem;
-    margin: 0 auto;
+    margin: 0 auto 2rem;
+    padding: 0 1rem;
+
+    section .eyebrow {
+      margin-bottom: .75rem;
+    }
   }
 
   .hero {
@@ -131,6 +141,43 @@ body {
         align-items: center;
         gap: .25rem;
       }
+    }
+  }
+
+  .platform-preview {
+    text-align: center;
+
+    .eyebrow {
+      color: oklch(from var(--primary) l c h / .5);
+      font-size: .75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .platform-preview__title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-align: center;
+      line-height: 1.625;
+
+      span {
+        color: oklch(from var(--primary) l c h / .5);
+        font-weight: normal;
+      }
+    }
+  }
+
+  footer {
+    max-width: 75rem;
+    margin: 0 auto 2rem;
+    padding: 3rem 1rem;
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      color: oklch(from var(--primary) l c h / .5);
+      font-size: .875rem;
     }
   }
 }
