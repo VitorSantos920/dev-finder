@@ -68,7 +68,7 @@
         cursor: pointer;
         color: var(--secondary);
         font-size: .75rem;
-        border: 1px solid oklch(100% 0 0/.09);
+        border: 1px solid oklch(from var(--secondary) l c h / .3);
         width: 8.875rem;
         transition: width .2s ease-in-out;
 
@@ -102,7 +102,7 @@
 
         &:hover {
           color: var(--primary);
-          background-color: oklch(50% 0.01 240 / .1);
+          background-color: oklch(from var(--secondary) l c h / .3);
         }
       }
     }

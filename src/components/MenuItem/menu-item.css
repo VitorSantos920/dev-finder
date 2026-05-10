@@ -6,7 +6,7 @@
   border-radius: .5rem;
 
   &:hover {
-    background-color: oklch(50% 0.01 240 / .1);
+    background-color: oklch(from var(--secondary) l c h / .3);
     color: var(--primary);
   }
 }
