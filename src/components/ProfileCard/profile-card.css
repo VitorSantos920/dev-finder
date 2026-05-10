@@ -1,0 +1,78 @@
+.profile-card {
+  background-color: #0a0d13;
+  padding: 1rem;
+  border: 1px solid oklch(100% 0 0/0.09);
+  display: flex;
+  border-radius: 1rem;
+  margin-top: 2rem;
+
+  .profile-card__user-info {
+    img {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 9999px;
+      margin-bottom: 0.75rem;
+    }
+
+    h2 {
+      font-size: 0.875rem;
+    }
+
+    small {
+      color: oklch(from var(--primary) l c h / 0.5);
+      font-size: 0.75rem;
+    }
+
+    p {
+      max-width: 30ch;
+      color: oklch(from var(--primary) l c h / 0.5);
+      font-size: 0.75rem;
+      margin-top: 0.75rem;
+    }
+
+    .profile-card__join-date svg {
+      vertical-align: middle;
+      margin-right: 0.25rem;
+    }
+  }
+
+  .profile-card__divider {
+    width: 1px;
+    background-color: oklch(100% 0 0/0.09);
+    margin: 0 1rem;
+    height: auto;
+  }
+
+  .profile-card__link {
+    margin-top: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    background-color: oklch(from var(--highlight) l c h / 0.1);
+    color: var(--highlight);
+    border: 1px solid oklch(from var(--highlight) l c h / 0.5);
+    font-size: 0.875rem;
+    padding: 0.625rem 1.25rem;
+    border-radius: 0.625rem;
+    font-weight: 600;
+    transition:
+      background-color 0.2s ease-in-out,
+      color 0.2s ease-in-out;
+
+    svg {
+      transition:
+        color 0.2s ease-in-out,
+        transform 0.2s ease-in-out;
+    }
+
+    &:hover {
+      background-color: var(--highlight);
+      color: var(--primary);
+
+      svg {
+        color: var(--primary);
+        transform: translateX(5px);
+      }
+    }
+  }
+}
