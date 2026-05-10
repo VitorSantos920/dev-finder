@@ -23,7 +23,6 @@ export function App() {
 
   async function handleSearch(event) {
     event.preventDefault();
-    console.log(username);
 
     const trimmed = username.toLowerCase().trim();
 
@@ -45,7 +44,6 @@ export function App() {
       }
 
       const data = await response.json();
-      console.log(data);
       setProfile(data);
     } catch (error) {
       setError(error.message);
