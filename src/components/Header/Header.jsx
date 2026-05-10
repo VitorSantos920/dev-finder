@@ -1,6 +1,7 @@
-import { Computer, Moon, Search } from 'lucide-react';
+import { Computer, Moon } from 'lucide-react';
 import './header.css';
 import { MenuItem } from '../MenuItem/MenuItem';
+import { SearchInput } from '../SearchInput/SearchInput';
 
 export function Header() {
   return (
@@ -23,14 +24,7 @@ export function Header() {
 
         <div className="header__actions">
           <label className="header__search">
-            <Search size={15} />
-            <input
-              type="search"
-              name="search"
-              id="search"
-              aria-label="Buscar no site"
-              placeholder="Search..."
-            />
+            <SearchInput name="header-search" id="header-search" placeholder="Search..." />
           </label>
 
           <button
