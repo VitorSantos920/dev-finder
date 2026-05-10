@@ -32,6 +32,105 @@ body {
   .container {
     max-width: 75rem;
     margin: 0 auto;
-    padding: 1.25rem;
+  }
+
+  .hero {
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .hero__powered {
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+      margin-bottom: 1rem;
+      color: var(--highlight);
+      padding: .375rem .75rem;
+      border: 1px solid oklch(from var(--highlight) l c h / 0.5);
+      border-radius: 3.40282e38px;
+      font-size: .75rem;
+      background-color: oklch(from var(--highlight) l c h / 0.15);
+    }
+
+    .hero__title {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-align: center;
+
+      span {
+        color: var(--highlight);
+      }
+    }
+
+    .hero__description {
+      font-size: 1.25rem;
+      color: oklch(from var(--primary) l c h / 0.5);
+      margin-bottom: 2rem;
+      text-align: center;
+      max-width: 40ch;
+      line-height: 1.625;
+    }
+
+    .hero__search {
+      background-color: #0A0D13;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: .5rem 1rem;
+      border-radius: 1rem;
+      cursor: pointer;
+      color: var(--secondary);
+      font-size: 1rem;
+      border: 1px solid oklch(100% 0 0/.09);
+      width: 45%;
+      transition: border-color .2s ease-in-out;
+
+      svg {
+        transition: transform .2s ease-in-out, color .2s ease-in-out;
+      }
+
+      &:focus-within {
+        border-color: var(--highlight);
+
+        >svg {
+          transform: rotate(90deg);
+          color: var(--highlight);
+        }
+      }
+
+      input {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        width: 100%;
+        height: 100%;
+        padding-right: .5rem;
+        color: var(--primary);
+        font-size: 1rem;
+
+        &::-webkit-search-cancel-button {
+          display: none;
+        }
+      }
+
+      .hero__search-btn {
+        background-color: var(--highlight);
+        border: none;
+        cursor: pointer;
+        color: var(--primary);
+        font-size: .75rem;
+        transition: background-color .2s ease-in-out, color .2s ease-in-out;
+        border-radius: .625rem;
+        padding: .625rem 1.25rem;
+        font-size: .875rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: .25rem;
+      }
+    }
   }
 }
