@@ -14,12 +14,13 @@ import { Logo } from '@/components/Logo/Logo';
 import { useState } from 'react';
 import { FeatureItem } from './components/FeatureItem/FeatureItem';
 
+const API_BASE = 'https://api.github.com/users';
+
 export function App() {
-  const API_BASE = 'https://api.github.com/users';
   const [username, setUsername] = useState('');
   const [profile, setProfile] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
 
   async function handleSearch(event) {
     event.preventDefault();
@@ -30,14 +31,14 @@ export function App() {
 
     setIsLoading(true);
     setProfile(null);
-    setError(false);
+    setError(null);
 
     try {
-      const response = await fetch(`${API_BASE}/${username}`);
+      const response = await fetch(`${API_BASE}/${trimmed}`);
 
       if (!response.ok) {
         if (response.status === 404) {
-          throw new Error(`User "${username}" not found`);
+          throw new Error(`User "${trimmed}" not found`);
         }
 
         throw new Error('An error occurred when retrieving data. Try again later!');
@@ -78,7 +79,7 @@ export function App() {
               value={username}
               onChange={(event) => setUsername(event.target.value)}
             />
-            <button type="submit" className={`hero__search-btn ${!username ? 'disabled' : ''}`}>
+            <button type="submit" className="hero__search-btn" disabled={!username}>
               Search
               <ArrowRight size={15} />
             </button>
