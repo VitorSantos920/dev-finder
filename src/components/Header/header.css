@@ -2,8 +2,8 @@
 
 .header {
   width: 100%;
-  padding: .75rem 0;
-  border: 1px solid oklch(50% 0.01 240 / .1);
+  padding: 0.75rem 0;
+  border: 1px solid oklch(50% 0.01 240 / 0.1);
   position: fixed;
   top: 0;
   left: 0;
@@ -19,13 +19,13 @@
 
     .header__menu,
     .header__actions {
-      font-size: .875rem;
+      font-size: 0.875rem;
     }
 
     .header__menu {
       display: flex;
       align-items: center;
-      gap: .25rem;
+      gap: 0.25rem;
     }
 
     .header__actions {
@@ -34,18 +34,18 @@
       justify-content: flex-end;
 
       .header__search {
-        background-color: #0A0D13;
+        background-color: #0a0d13;
         display: flex;
         align-items: center;
-        gap: .25rem;
-        padding: .5rem 1rem;
-        border-radius: .5rem;
+        gap: 0.25rem;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
         cursor: pointer;
         color: var(--secondary);
-        font-size: .75rem;
-        border: 1px solid oklch(from var(--secondary) l c h / .3);
+        font-size: 0.75rem;
+        border: 1px solid oklch(from var(--secondary) l c h / 0.3);
         width: 8.875rem;
-        transition: width .2s ease-in-out;
+        transition: width 0.2s ease-in-out;
 
         &:focus-within {
           border-color: var(--highlight);
@@ -57,7 +57,7 @@
           border: none;
           outline: none;
           width: 100%;
-          padding-right: .5rem;
+          padding-right: 0.5rem;
 
           &::-webkit-search-cancel-button {
             display: none;
@@ -70,14 +70,16 @@
         border: none;
         cursor: pointer;
         color: var(--secondary);
-        font-size: .75rem;
-        transition: background-color .2s ease-in-out, color .2s ease-in-out;
-        border-radius: .5rem;
+        font-size: 0.75rem;
+        transition:
+          background-color 0.2s ease-in-out,
+          color 0.2s ease-in-out;
+        border-radius: 0.5rem;
         padding: 0.5rem;
 
         &:hover {
           color: var(--primary);
-          background-color: oklch(from var(--secondary) l c h / .3);
+          background-color: oklch(from var(--secondary) l c h / 0.3);
         }
       }
     }
