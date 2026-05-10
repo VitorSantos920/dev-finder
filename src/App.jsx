@@ -94,10 +94,9 @@ export function App() {
                 <img src={profile.avatar_url} />
                 <h2>{profile.name}</h2>
                 <small>
-                  @{profile.login} | <MapPin size={12} />{' '}
-                  {profile.location ?? 'Location not available'}
+                  @{profile.login} | <MapPin size={12} /> {profile.location ?? 'N/A'}
                 </small>
-                <p>{profile.bio}</p>
+                <p>{profile.bio ?? 'No bio available.'}</p>
                 <p className="hero__profile-join-date">
                   <Calendar size={12} />
                   Joined at {new Date(profile.created_at).toLocaleDateString('en-US')}
