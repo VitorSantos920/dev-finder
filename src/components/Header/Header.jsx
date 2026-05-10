@@ -1,7 +1,7 @@
 import { Moon } from 'lucide-react';
-import { MenuItem } from '../MenuItem/MenuItem';
-import { SearchInput } from '../SearchInput/SearchInput';
-import { Logo } from '../Logo/Logo';
+import { MenuItem } from '@/components/MenuItem/MenuItem';
+import { SearchInput } from '@/components/SearchInput/SearchInput';
+import { Logo } from '@/components/Logo/Logo';
 import './header.css';
 
 export function Header() {

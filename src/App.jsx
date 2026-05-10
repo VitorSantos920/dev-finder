@@ -1,7 +1,7 @@
 import { Header } from '@/components/Header/Header';
-import { SearchInput } from './components/SearchInput/SearchInput';
+import { SearchInput } from '@/components/SearchInput/SearchInput';
 import { ArrowRight, Zap } from 'lucide-react';
-import { Logo } from './components/Logo/Logo';
+import { Logo } from '@/components/Logo/Logo';
 
 export function App() {
   return (
