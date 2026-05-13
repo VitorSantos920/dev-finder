@@ -2,7 +2,7 @@ import { Header } from '@/components/Header/Header';
 import { SearchInput } from '@/components/SearchInput/SearchInput';
 import { ArrowRight, ChartNoAxesColumn, Code, Search, Users, Zap } from 'lucide-react';
 import { Logo } from '@/components/Logo/Logo';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { FeatureItem } from './components/FeatureItem/FeatureItem';
 import { ProfileCard } from './components/ProfileCard/ProfileCard';
 
@@ -13,6 +13,7 @@ export function App() {
   const [profile, setProfile] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const searchInputRef = useRef(null);
 
   async function handleSearch(event) {
     event.preventDefault();
@@ -52,6 +53,10 @@ export function App() {
       document.title = 'devfinder - Discover developers through data';
     }
   }, [profile]);
+
+  useEffect(() => {
+    searchInputRef.current?.focus();
+  }, []);
   return (
     <>
       <Header />
@@ -72,6 +77,7 @@ export function App() {
 
           <form className="hero__search" onSubmit={handleSearch}>
             <SearchInput
+              ref={searchInputRef}
               iconSize={25}
               name="hero-search"
               id="hero-search"
