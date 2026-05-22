@@ -1,6 +1,7 @@
+import { memo } from 'react';
 import './featureitem.css';
 
-export function FeatureItem({ icon: Icon, title, description }) {
+export const FeatureItem = memo(function FeatureItem({ icon: Icon, title, description }) {
   return (
     <article className="features__item">
       <div className="features__item-icon">
@@ -10,4 +11,4 @@ export function FeatureItem({ icon: Icon, title, description }) {
       <p className="features__item-description">{description}</p>
     </article>
   );
-}
+});
