@@ -1,9 +1,10 @@
 import { Computer } from 'lucide-react';
 import './logo.css';
+import { Link } from 'react-router-dom';
 
 export function Logo() {
   return (
-    <a className="logo" href="/">
+    <Link className="logo" to="/">
       <div className="logo-container">
         <Computer size={15} />
       </div>
@@ -11,6 +12,6 @@ export function Logo() {
         Dev
         <span>Finder</span>
       </div>
-    </a>
+    </Link>
   );
 }

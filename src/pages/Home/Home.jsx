@@ -1,58 +1,24 @@
+import { useEffect, useRef, useState } from 'react';
+import { ArrowRight, ChartNoAxesColumn, Code, Search, Users, Zap } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { Header } from '@/components/Header/Header';
 import { SearchInput } from '@/components/SearchInput/SearchInput';
-import { ArrowRight, ChartNoAxesColumn, Code, Search, Users, Zap } from 'lucide-react';
 import { Logo } from '@/components/Logo/Logo';
-import { useEffect, useRef, useState } from 'react';
-import { FeatureItem } from './components/FeatureItem/FeatureItem';
-import { ProfileCard } from './components/ProfileCard/ProfileCard';
+import { FeatureItem } from '@/components/FeatureItem/FeatureItem';
 
-const API_BASE = 'https://api.github.com/users';
-
-export function App() {
+export function Home() {
   const [username, setUsername] = useState('');
-  const [profile, setProfile] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const searchInputRef = useRef(null);
 
-  async function handleSearch(event) {
+  const searchInputRef = useRef(null);
+  const navigate = useNavigate();
+
+  function handleSearch(event) {
     event.preventDefault();
 
     const trimmed = username.toLowerCase().trim();
-
     if (!trimmed) return;
-
-    setIsLoading(true);
-    setProfile(null);
-    setError(null);
-
-    try {
-      const response = await fetch(`${API_BASE}/${trimmed}`);
-
-      if (!response.ok) {
-        if (response.status === 404) {
-          throw new Error(`User "${trimmed}" not found`);
-        }
-
-        throw new Error('An error occurred when retrieving data. Try again later!');
-      }
-
-      const data = await response.json();
-      setProfile(data);
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setIsLoading(false);
-    }
+    navigate(`/user/${trimmed}`);
   }
-
-  useEffect(() => {
-    if (profile) {
-      document.title = `${profile.name ?? profile.login} (@${profile.login}) | devfinder`;
-    } else {
-      document.title = 'devfinder - Discover developers through data';
-    }
-  }, [profile]);
 
   useEffect(() => {
     searchInputRef.current?.focus();
@@ -90,12 +56,6 @@ export function App() {
               <ArrowRight size={15} />
             </button>
           </form>
-
-          {isLoading && <p>Carregando dados...</p>}
-
-          {error && <p>{error}!</p>}
-
-          {profile && <ProfileCard profile={profile} />}
         </section>
 
         <section className="platform-preview">

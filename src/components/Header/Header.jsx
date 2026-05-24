@@ -12,7 +12,7 @@ export function Header() {
 
         <nav className="header__menu">
           <MenuItem link="/" content="Home" />
-          <MenuItem link="/explore" content="Explore" />
+          <MenuItem link="/search" content="Explore" />
         </nav>
 
         <div className="header__actions">
