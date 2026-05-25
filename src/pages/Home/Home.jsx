@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, ChartNoAxesColumn, Code, Search, Users, Zap } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { Header } from '@/components/Header/Header';
 import { SearchInput } from '@/components/SearchInput/SearchInput';
-import { Logo } from '@/components/Logo/Logo';
 import { FeatureItem } from '@/components/FeatureItem/FeatureItem';
+import { Footer } from '@/components/Footer/Footer';
 
 export function Home() {
   const [username, setUsername] = useState('');
@@ -23,9 +22,13 @@ export function Home() {
   useEffect(() => {
     searchInputRef.current?.focus();
   }, []);
+
+  useEffect(() => {
+    document.title = 'devfinder - Discover developers through data';
+  }, []);
+
   return (
     <>
-      <Header />
       <main className="container">
         <section className="hero">
           <span className="hero__powered">
@@ -101,11 +104,7 @@ export function Home() {
           </div>
         </section>
       </main>
-      <footer>
-        <Logo />
-
-        <p>Built with the GitHub API · Not affiliated with GitHub, Inc.</p>
-      </footer>
+      <Footer />
     </>
   );
 }

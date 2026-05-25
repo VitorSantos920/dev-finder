@@ -1,6 +1,8 @@
-import { useParams } from 'react-router-dom';
-import { ProfileCard } from '../../components/ProfileCard/ProfileCard';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { ArrowLeft } from 'lucide-react';
+import { ProfileCard } from '@/components/ProfileCard/ProfileCard';
+import { Footer } from '@/components/Footer/Footer';
 
 const API_BASE = 'https://api.github.com/users';
 
@@ -9,6 +11,7 @@ export function UserProfile() {
   const [profile, setProfile] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchProfile() {
@@ -47,12 +50,19 @@ export function UserProfile() {
   }, [profile]);
 
   return (
-    <main>
-      {isLoading && <p>Carregando dados...</p>}
+    <>
+      <main className="container">
+        <button onClick={() => navigate(-1)}>
+          <ArrowLeft />
+          Back
+        </button>
+        {isLoading && <p>Carregando dados...</p>}
 
-      {error && <p>{error}!</p>}
+        {error && <p>{error}!</p>}
 
-      {profile && <ProfileCard profile={profile} />}
-    </main>
+        {profile && <ProfileCard profile={profile} />}
+      </main>
+      <Footer />
+    </>
   );
 }
