@@ -1,15 +1,17 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { ArrowRight, ChartNoAxesColumn, Code, Search, Users, Zap } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { SearchInput } from '@/components/SearchInput/SearchInput';
 import { FeatureItem } from '@/components/FeatureItem/FeatureItem';
 import { Footer } from '@/components/Footer/Footer';
+import { useAutoFocus } from '@/hooks/useAutoFocus';
+import { usePageTitle } from '../../hooks/usePageTitle';
 
 export function Home() {
   const [username, setUsername] = useState('');
-
-  const searchInputRef = useRef(null);
+  const searchInputRef = useAutoFocus();
   const navigate = useNavigate();
+  usePageTitle('devfinder - Discover developers through data');
 
   function handleSearch(event) {
     event.preventDefault();
@@ -18,14 +20,6 @@ export function Home() {
     if (!trimmed) return;
     navigate(`/user/${trimmed}`);
   }
-
-  useEffect(() => {
-    searchInputRef.current?.focus();
-  }, []);
-
-  useEffect(() => {
-    document.title = 'devfinder - Discover developers through data';
-  }, []);
 
   return (
     <>
