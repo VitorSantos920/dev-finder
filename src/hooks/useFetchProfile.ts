@@ -1,11 +1,12 @@
+import { GithubProfile } from '@/types/github';
 import { useEffect, useState } from 'react';
 
 const API_BASE = 'https://api.github.com/users';
 
-export function useFetchProfile(username) {
-  const [profile, setProfile] = useState(null);
+export function useFetchProfile(username: string | undefined) {
+  const [profile, setProfile] = useState<GithubProfile | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!username) return;
@@ -29,14 +30,18 @@ export function useFetchProfile(username) {
         const data = await response.json();
         setProfile(data);
       } catch (error) {
-        setError(error.message);
+        if (error instanceof Error) {
+          setError(error.message);
+        } else {
+          setError('An unexpected error occurred');
+        }
       } finally {
         setIsLoading(false);
       }
     }
 
     fetchProfile();
-  }, [username])
+  }, [username]);
 
-  return { profile, isLoading, error }
+  return { profile, isLoading, error };
 }

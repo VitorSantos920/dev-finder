@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { ChangeEvent, SubmitEvent, useState } from 'react';
 import { ArrowRight, ChartNoAxesColumn, Code, Search, Users, Zap } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { SearchInput } from '@/components/SearchInput/SearchInput';
 import { FeatureItem } from '@/components/FeatureItem/FeatureItem';
 import { Footer } from '@/components/Footer/Footer';
 import { useAutoFocus } from '@/hooks/useAutoFocus';
-import { usePageTitle } from '../../hooks/usePageTitle';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 export function Home() {
   const [username, setUsername] = useState('');
@@ -13,7 +13,7 @@ export function Home() {
   const navigate = useNavigate();
   usePageTitle('devfinder - Discover developers through data');
 
-  function handleSearch(event) {
+  function handleSearch(event: SubmitEvent) {
     event.preventDefault();
 
     const trimmed = username.toLowerCase().trim();
@@ -46,7 +46,7 @@ export function Home() {
               id="hero-search"
               placeholder="Search by GitHub username..."
               value={username}
-              onChange={(event) => setUsername(event.target.value)}
+              onChange={(event: ChangeEvent<HTMLInputElement>) => setUsername(event.target.value)}
             />
             <button type="submit" className="hero__search-btn" disabled={!username}>
               Search

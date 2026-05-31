@@ -1,11 +1,16 @@
 import { ArrowRight, Calendar, MapPin } from 'lucide-react';
 import './profile-card.css';
+import { GithubProfile } from '@/types/github';
 
-export function ProfileCard({ profile }) {
+type ProfileCardProps = {
+  profile: GithubProfile;
+};
+
+export function ProfileCard({ profile }: ProfileCardProps) {
   return (
     <article className="profile-card">
       <section className="profile-card__user-info">
-        <img src={profile.avatar_url} alt="" />
+        <img src={profile.avatar_url} alt={`${profile.login}'s avatar`} />
         <h2>{profile.name ?? profile.login}</h2>
         <small>
           @{profile.login} | <MapPin size={12} /> {profile.location ?? 'N/A'}

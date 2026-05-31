@@ -1,7 +1,18 @@
 import { memo } from 'react';
 import './featureitem.css';
+import { type LucideIcon } from 'lucide-react';
 
-export const FeatureItem = memo(function FeatureItem({ icon: Icon, title, description }) {
+type FeatureItemProps = {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+};
+
+export const FeatureItem = memo(function FeatureItem({
+  icon: Icon,
+  title,
+  description,
+}: FeatureItemProps) {
   return (
     <article className="features__item">
       <div className="features__item-icon">

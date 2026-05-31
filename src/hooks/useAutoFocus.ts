@@ -1,11 +1,11 @@
 import { useEffect, useRef } from 'react';
 
 export function useAutoFocus() {
-  const ref = useRef(null);
+  const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    ref.current?.focus()
-  }, [])
+    ref.current?.focus();
+  }, []);
 
   return ref;
 }
