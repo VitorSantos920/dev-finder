@@ -1,4 +1,13 @@
-@import url('./variables.css');
+@import 'tailwindcss';
+
+@theme {
+  --color-background: oklch(11.8% 0.01 240);
+  --color-primary: oklch(100% 0 0);
+  --color-secondary: oklch(50% 0.01 240);
+  --color-highlight: oklch(0.6 0.22 258);
+
+  --font-fans: 'Geist', sans-serif;
+}
 
 * {
   margin: 0;
