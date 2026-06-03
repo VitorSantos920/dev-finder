@@ -8,7 +8,7 @@ type MenuItemProps = {
 
 export function MenuItem({ link, content }: MenuItemProps) {
   return (
-    <NavLink className="header__menu-item" to={link}>
+    <NavLink className='header__menu-item' to={link}>
       {content}
     </NavLink>
   );

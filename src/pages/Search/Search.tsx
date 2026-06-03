@@ -24,18 +24,20 @@ export function Search() {
   }, []);
 
   return (
-    <main className="container">
-      <form className="hero__search" onSubmit={handleSearch}>
+    <main className='container'>
+      <form className='hero__search' onSubmit={handleSearch}>
         <SearchInput
           ref={searchInputRef}
           iconSize={25}
-          name="hero-search"
-          id="hero-search"
-          placeholder="Search by GitHub username..."
+          name='hero-search'
+          id='hero-search'
+          placeholder='Search by GitHub username...'
           value={username}
-          onChange={(event: ChangeEvent<HTMLInputElement>) => setUsername(event.target.value)}
+          onChange={(event: ChangeEvent<HTMLInputElement>) =>
+            setUsername(event.target.value)
+          }
         />
-        <button type="submit" className="hero__search-btn" disabled={!username}>
+        <button type='submit' className='hero__search-btn' disabled={!username}>
           Search
           <ArrowRight size={15} />
         </button>

@@ -13,12 +13,12 @@ export function UserProfile() {
   usePageTitle(
     profile
       ? `${profile.name ?? profile.login} (@${profile.login}) | devfinder`
-      : 'devfinder - Discover developers through data',
+      : 'devfinder - Discover developers through data'
   );
 
   return (
     <>
-      <main className="container">
+      <main className='container'>
         <button onClick={() => navigate(-1)}>
           <ArrowLeft />
           Back

@@ -14,12 +14,12 @@ export const FeatureItem = memo(function FeatureItem({
   description,
 }: FeatureItemProps) {
   return (
-    <article className="features__item">
-      <div className="features__item-icon">
+    <article className='features__item'>
+      <div className='features__item-icon'>
         <Icon size={18} />
       </div>
-      <h3 className="features__item-title">{title}</h3>
-      <p className="features__item-description">{description}</p>
+      <h3 className='features__item-title'>{title}</h3>
+      <p className='features__item-description'>{description}</p>
     </article>
   );
 });

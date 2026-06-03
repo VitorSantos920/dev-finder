@@ -24,7 +24,9 @@ export function useFetchProfile(username: string | undefined) {
             throw new Error(`User "${username}" not found`);
           }
 
-          throw new Error('An error occurred when retrieving data. Try again later!');
+          throw new Error(
+            'An error occurred when retrieving data. Try again later!'
+          );
         }
 
         const data = await response.json();
