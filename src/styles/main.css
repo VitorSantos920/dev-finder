@@ -6,18 +6,7 @@
   --color-secondary: oklch(50% 0.01 240);
   --color-highlight: oklch(0.6 0.22 258);
 
-  --font-fans: 'Geist', sans-serif;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-
-  &::before,
-  &::after {
-    box-sizing: border-box;
-  }
+  --font-sans: 'Geist', sans-serif;
 }
 
 input,
@@ -34,14 +23,7 @@ img {
 }
 
 body {
-  background-color: var(--background);
-  color: var(--primary);
-  font-family: 'Geist', sans-serif;
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
+  @apply bg-background text-primary font-sans;
 
   .container {
     max-width: 75rem;
@@ -209,19 +191,6 @@ body {
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
       gap: 1rem;
-    }
-  }
-
-  footer {
-    max-width: 75rem;
-    margin: 0 auto 2rem;
-    padding: 3rem 1rem;
-    display: flex;
-    justify-content: space-between;
-
-    p {
-      color: oklch(from var(--primary) l c h / 0.5);
-      font-size: 0.875rem;
     }
   }
 }
