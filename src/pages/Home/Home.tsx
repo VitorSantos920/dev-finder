@@ -31,21 +31,24 @@ export function Home() {
   return (
     <>
       <main className='container'>
-        <section className='hero'>
-          <span className='hero__powered'>
+        <section className='flex min-h-[calc(100dvh-5.25rem)] flex-col items-center justify-center pb-24'>
+          <span className='text-highlight border-highlight/50 bg-highlight/15 mb-4 flex items-center gap-[0.35rem] rounded-full border px-3 py-1.5 text-xs'>
             <Zap size={14} />
             Powered by GitHub API
           </span>
-          <h1 className='hero__title'>
+          <h1 className='mb-4 text-center text-[4rem] font-bold'>
             Discover developers <br />
-            <span>through data.</span>
+            <span className='text-highlight'>through data.</span>
           </h1>
-          <p className='hero__description'>
+          <p className='text-primary/50 mb-8 max-w-[40ch] text-center text-xl leading-relaxed'>
             Search GitHub profiles, explore repositories, analyze contribution
             patterns, and understand any developer at a glance.
           </p>
 
-          <form className='hero__search' onSubmit={handleSearch}>
+          <form
+            className='group bg-background-secondary text-secondary border-primary/10 focus-within:border-highlight flex w-full cursor-pointer items-center gap-3 rounded-2xl border px-4 py-2 text-base transition-colors duration-200 ease-in-out md:w-3xl'
+            onSubmit={handleSearch}
+          >
             <SearchInput
               ref={searchInputRef}
               iconSize={25}
@@ -53,44 +56,51 @@ export function Home() {
               id='hero-search'
               placeholder='Search by GitHub username...'
               value={username}
+              className='text-base'
               onChange={(event: ChangeEvent<HTMLInputElement>) =>
                 setUsername(event.target.value)
               }
             />
             <button
               type='submit'
-              className='hero__search-btn'
+              className='group bg-highlight text-primary disabled:bg-highlight/50 disabled:text-primary/50 flex cursor-pointer items-center gap-1 rounded-[0.625rem] border-0 px-5 py-2.5 text-sm font-semibold transition-colors duration-200 ease-in-out disabled:cursor-not-allowed'
               disabled={!username}
             >
               Search
-              <ArrowRight size={15} />
+              <ArrowRight
+                className='group-disabled:text-primary/50'
+                size={15}
+              />
             </button>
           </form>
         </section>
 
-        <section className='platform-preview'>
-          <header>
-            <p className='eyebrow'>PLATFORM PREVIEW</p>
-            <h2 className='platform-preview__title'>
+        <section className='pb-24 text-center'>
+          <header className='mb-8'>
+            <p className='eyebrow text-primary/50 mb-3 text-xs font-semibold uppercase'>
+              PLATFORM PREVIEW
+            </p>
+            <h2 className='mb-4 text-center text-[2.5rem] leading-relaxed font-bold'>
               Everything you need to know
               <br />
-              <span>about any developer.</span>
+              <span className='text-primary/50 font-normal'>
+                about any developer.
+              </span>
             </h2>
           </header>
 
-          <img
-            src='/profile-mockup.webp'
-            className='platform-preview__exhibition'
-          />
+          <img src='/profile-mockup.webp' />
         </section>
 
-        <section className='features'>
-          <header>
-            <p className='eyebrow'>Features</p>
-            <h2 className='features__title'>Built for developer exploration</h2>
+        <section className='pb-24 text-center'>
+          <header className='mb-8'>
+            <p className='eyebrow text-primary/50 mb-3 text-xs font-semibold uppercase'>
+              Features
+            </p>
+            <h2 className='text-[2rem]'>Built for developer exploration</h2>
           </header>
 
-          <div className='features__items'>
+          <div className='grid gap-4 text-left md:grid-cols-2'>
             <FeatureItem
               icon={Search}
               title='Intelligent Search'

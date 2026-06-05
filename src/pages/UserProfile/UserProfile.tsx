@@ -19,8 +19,11 @@ export function UserProfile() {
   return (
     <>
       <main className='container'>
-        <button onClick={() => navigate(-1)}>
-          <ArrowLeft />
+        <button
+          className='bg-background-secondary text-secondary hover:text-primary flex cursor-pointer items-center gap-2 rounded-lg px-3 py-1.5 text-sm transition-colors duration-200'
+          onClick={() => navigate(-1)}
+        >
+          <ArrowLeft size={14} />
           Back
         </button>
 

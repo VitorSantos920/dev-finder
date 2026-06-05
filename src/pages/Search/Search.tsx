@@ -1,4 +1,4 @@
-import { ChangeEvent, SubmitEvent, useEffect, useState } from 'react';
+import { ChangeEvent, SubmitEvent, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { SearchInput } from '@/components/SearchInput/SearchInput';
@@ -19,27 +19,32 @@ export function Search() {
     navigate(`/user/${trimmed}`);
   }
 
-  useEffect(() => {
-    document.title = 'devfinder - Discover developers through data';
-  }, []);
-
   return (
     <main className='container'>
-      <form className='hero__search' onSubmit={handleSearch}>
+      <h1 className='mb-4 text-3xl font-bold'>Explore Developers</h1>
+      <form
+        className='group bg-background-secondary text-secondary border-primary/10 focus-within:border-highlight flex w-full cursor-pointer items-center gap-3 rounded-2xl border px-4 py-2 text-base transition-colors duration-200 ease-in-out'
+        onSubmit={handleSearch}
+      >
         <SearchInput
           ref={searchInputRef}
           iconSize={25}
-          name='hero-search'
-          id='hero-search'
+          name='search'
+          id='search'
           placeholder='Search by GitHub username...'
           value={username}
+          className='text-base'
           onChange={(event: ChangeEvent<HTMLInputElement>) =>
             setUsername(event.target.value)
           }
         />
-        <button type='submit' className='hero__search-btn' disabled={!username}>
+        <button
+          type='submit'
+          className='group bg-highlight text-primary disabled:bg-highlight/50 disabled:text-primary/50 flex cursor-pointer items-center gap-1 rounded-[0.625rem] border-0 px-5 py-2.5 text-sm font-semibold transition-colors duration-200 ease-in-out disabled:cursor-not-allowed'
+          disabled={!username}
+        >
           Search
-          <ArrowRight size={15} />
+          <ArrowRight className='group-disabled:text-primary/50' size={15} />
         </button>
       </form>
     </main>
