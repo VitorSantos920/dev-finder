@@ -1,4 +1,3 @@
-import { ChangeEvent, SubmitEvent, useState } from 'react';
 import {
   ArrowRight,
   ChartNoAxesColumn,
@@ -11,21 +10,24 @@ import { useNavigate } from 'react-router-dom';
 import { SearchInput } from '@/components/SearchInput/SearchInput';
 import { FeatureItem } from '@/components/FeatureItem/FeatureItem';
 import { Footer } from '@/components/Footer/Footer';
-import { useAutoFocus } from '@/hooks/useAutoFocus';
 import { usePageTitle } from '@/hooks/usePageTitle';
+import { type SearchFormData, searchSchema } from '@/schemas/searchSchema';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 export function Home() {
-  const [username, setUsername] = useState('');
-  const searchInputRef = useAutoFocus();
   const navigate = useNavigate();
   usePageTitle('devfinder - Discover developers through data');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SearchFormData>({
+    resolver: zodResolver(searchSchema),
+  });
 
-  function handleSearch(event: SubmitEvent) {
-    event.preventDefault();
-
-    const trimmed = username.toLowerCase().trim();
-    if (!trimmed) return;
-    navigate(`/user/${trimmed}`);
+  function onSubmit(data: SearchFormData) {
+    navigate(`/user/${data.username}`);
   }
 
   return (
@@ -47,24 +49,19 @@ export function Home() {
 
           <form
             className='group bg-background-secondary text-secondary border-primary/10 focus-within:border-highlight flex w-full cursor-pointer items-center gap-3 rounded-2xl border px-4 py-2 text-base transition-colors duration-200 ease-in-out md:w-3xl'
-            onSubmit={handleSearch}
+            onSubmit={handleSubmit(onSubmit)}
           >
             <SearchInput
-              ref={searchInputRef}
+              {...register('username')}
+              autoFocus
               iconSize={25}
-              name='hero-search'
               id='hero-search'
               placeholder='Search by GitHub username...'
-              value={username}
               className='text-base'
-              onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                setUsername(event.target.value)
-              }
             />
             <button
               type='submit'
               className='group bg-highlight text-primary disabled:bg-highlight/50 disabled:text-primary/50 flex cursor-pointer items-center gap-1 rounded-[0.625rem] border-0 px-5 py-2.5 text-sm font-semibold transition-colors duration-200 ease-in-out disabled:cursor-not-allowed'
-              disabled={!username}
             >
               Search
               <ArrowRight
@@ -73,6 +70,16 @@ export function Home() {
               />
             </button>
           </form>
+          {errors.username && (
+            <p
+              role='alert'
+              aria-describedby='hero-search'
+              aria-invalid
+              className='mt-2 text-sm text-red-500'
+            >
+              {errors.username.message}
+            </p>
+          )}
         </section>
 
         <section className='pb-24 text-center'>
