@@ -28,7 +28,7 @@ export function UserProfile() {
         </button>
 
         {isLoading && <p>Carregando dados...</p>}
-        {error && <p>{error}!</p>}
+        {error && <p>{error.message}!</p>}
         {profile && <ProfileCard profile={profile} />}
       </main>
       <Footer />
